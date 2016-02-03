@@ -107,6 +107,14 @@
       <HintPath>..\packages\WebSharper.3.6.7.227\lib\net40\WebSharper.Sitelets.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebSharper.UI.Next">
+      <HintPath>..\packages\WebSharper.UI.Next.3.6.6.202\lib\net40\WebSharper.UI.Next.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.Templating">
+      <HintPath>..\packages\WebSharper.UI.Next.3.6.6.202\lib\net40\WebSharper.UI.Next.Templating.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebSharper.Web">
       <HintPath>..\packages\WebSharper.3.6.7.227\lib\net40\WebSharper.Web.dll</HintPath>
       <Private>True</Private>
