@@ -17,6 +17,7 @@ let wrapper =
         .References(fun ref -> 
             [
                 ref.Project extensions
+                (ref.NuGet "WebSharper.UI.Next").Reference()
             ])
 
 let tests =
@@ -26,7 +27,7 @@ let tests =
             [
                 ref.Project extensions
                 ref.Project wrapper
-                (ref.NuGet "WebSharper.Html").Reference()
+                (ref.NuGet "WebSharper.UI.Next").Reference()
             ])
 
 bt.Solution [
