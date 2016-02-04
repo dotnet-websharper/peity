@@ -31,9 +31,11 @@ module Seq =
     let inline indexed (source: seq<'T>) = Seq.mapi (fun i v -> (i, v)) source
 
 [<JavaScript>]
-type UpdatingChart(data: seq<double>, ?config: PeityConfig) =
+type UpdatingChart(data: seq<double>, ?windowSize: int, ?config: PeityConfig) =
     let data = ListModel.Create fst (Seq.indexed data)
-    
+    let i = ref data.Length
+    let j = ref 0
+
     member val Doc =
         data.View
         |> Doc.BindView (fun s ->
@@ -53,6 +55,16 @@ type UpdatingChart(data: seq<double>, ?config: PeityConfig) =
             ]
         ) with get
 
-    member this.AddValue v = data.Add (data.Length, v)
+    member this.AddValue v =
+        data.Add (!i, v)
+        incr i
+        
+        match windowSize with
+        | Some size ->
+            if data.Length > size then
+                data.RemoveByKey !j
+                incr j
+        | None ->
+            ()
 
     member this.Update s = data.Set (Seq.indexed s)

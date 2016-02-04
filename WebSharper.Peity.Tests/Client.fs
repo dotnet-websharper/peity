@@ -2,32 +2,7 @@ namespace WebSharper.Peity.Tests
 
 open WebSharper
 open WebSharper.JavaScript
-open WebSharper.JQuery
 open WebSharper.Peity
-
-[<JavaScript>]
-module Test0 =
-    open WebSharper.Html.Client
-
-    let chart =
-        Span [
-            [|0 .. 10|]
-            |> Array.map (fun _ ->
-                string <| Math.Floor(Math.Random() * 10.0)
-            )
-            |> String.concat ","
-            |> Text
-        ]
-        |>! OnAfterRender (fun data ->
-            JQuery.Of(data.Dom).Peity("line", PeityConfig(Width = 64))
-            |> ignore
-        )
-
-[<JavaScript>]
-module Test1 =
-    
-    let chart =
-        UpdatingChart([], PeityConfig(Width = 64))
 
 [<JavaScript>]
 module Client =
@@ -35,14 +10,37 @@ module Client =
     open WebSharper.UI.Next.Html
 
     let main =
-        (Html.Client.Tags.Div [ Test0.chart ]).AppendTo "body"
-        
-        async {
-            for _ in 1 .. 10 do
-                do! Async.Sleep 500
-                (Test1.chart.AddValue << double) <| Math.Floor(Math.Random() * 10.0)
-        }
-        |> Async.Start
+        div [
+            let chart1 = UpdatingChart([], config = PeityConfig(Width = 64))
+            
+            yield chart1.Doc
+            yield div [
+                Doc.Button "Button1" [] (fun () ->
+                    chart1.AddValue <| Math.Random()
+                )
+            ] :> _
 
-        div [ Test1.chart.Doc ]
-        |> Doc.RunAppendById "body"
+            yield hr [] :> _
+            yield div [
+                let config =
+                    PeityConfig(
+                        Width = 64,
+                        Fill  = [| "rgba(255,0,0,0.5)" |],
+                        Stroke = [| "red" |]
+                    )
+                let chart2 = UpdatingChart([], 10, config)
+
+                let rec update (c: UpdatingChart) =
+                    async {
+                        let! _ = Async.Sleep 1000
+
+                        c.AddValue <| Math.Random()
+                        update c
+                    }
+                    |> Async.Start
+
+                yield chart2.Doc
+                update chart2
+            ] :> _
+        ]
+        |> Doc.RunById "body"
