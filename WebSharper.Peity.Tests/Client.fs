@@ -9,7 +9,12 @@ module Client =
     open WebSharper.UI.Next.Client
     open WebSharper.UI.Next.Html
 
+#if ZAFIR
+    [<SPAEntryPoint>]
+    let main() =
+#else
     let main =
+#endif
         div [
             let chart1 = UpdatingChart([], config = PeityConfig(Width = 64))
             
