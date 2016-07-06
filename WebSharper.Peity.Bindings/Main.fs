@@ -29,7 +29,9 @@ module Definition =
                  PeityConfig
             ]
             Namespace "WebSharper.Peity.Resources" [
-                (Resource "Peity 3.2.0" "jquery.peity.min.js").AssemblyWide()
+                (Resource "Peity 3.2.0" "jquery.peity.min.js")
+                |> RequiresExternal [ T<WebSharper.JQuery.Resources.JQuery> ]
+                |> AssemblyWide
             ]
         ]
 
