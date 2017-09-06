@@ -3,31 +3,31 @@
 open IntelliFactory.Build
 
 let bt =
-    BuildTool().PackageId("Zafir.Peity")
-        .VersionFrom("Zafir")
+    BuildTool().PackageId("WebSharper.Peity")
+        .VersionFrom("WebSharper")
 
 let extensions =
-    bt.Zafir.Extension("WebSharper.Peity.Bindings")
+    bt.WebSharper4.Extension("WebSharper.Peity.Bindings")
         .SourcesFromProject()
         .Embed(["jquery.peity.min.js"])
 
 let wrapper =
-    bt.Zafir.Library("WebSharper.Peity")
+    bt.WebSharper4.Library("WebSharper.Peity")
         .SourcesFromProject()
         .References(fun ref -> 
             [
                 ref.Project extensions
-                (ref.NuGet "Zafir.UI.Next").Latest(true).ForceFoundVersion().Reference()
+                (ref.NuGet "WebSharper.UI.Next").Latest(true).ForceFoundVersion().Reference()
             ])
 
 let tests =
-    bt.Zafir.BundleWebsite("WebSharper.Peity.Tests")
+    bt.WebSharper4.BundleWebsite("WebSharper.Peity.Tests")
         .SourcesFromProject()
         .References(fun ref -> 
             [
                 ref.Project extensions
                 ref.Project wrapper
-                (ref.NuGet "Zafir.UI.Next").Latest(true).Reference()
+                (ref.NuGet "WebSharper.UI.Next").Latest(true).Reference()
             ])
 
 bt.Solution [
