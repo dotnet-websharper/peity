@@ -3,9 +3,9 @@ namespace WebSharper.Peity
 open WebSharper
 open WebSharper.JavaScript
 open WebSharper.JQuery
-open WebSharper.UI.Next
-open WebSharper.UI.Next.Client
-open WebSharper.UI.Next.Html
+open WebSharper.UI
+open WebSharper.UI.Client
+open WebSharper.UI.Html
 
 [<AutoOpen>]
 module JQueryExtensions =
@@ -39,7 +39,7 @@ type UpdatingChart(data: seq<double>, ?windowSize: int, ?config: PeityConfig) =
     member val Doc =
         data.View
         |> Doc.BindView (fun s ->
-            spanAttr [
+            span [
                 on.afterRender (fun e ->
                     JQuery.Of(e).Peity("line", (Option.toObj config)) |> ignore
                 )

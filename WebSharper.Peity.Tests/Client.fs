@@ -6,27 +6,23 @@ open WebSharper.Peity
 
 [<JavaScript>]
 module Client =
-    open WebSharper.UI.Next.Client
-    open WebSharper.UI.Next.Html
+    open WebSharper.UI.Client
+    open WebSharper.UI.Html
 
-#if ZAFIR
     [<SPAEntryPoint>]
     let main() =
-#else
-    let main =
-#endif
-        div [
+        div [] [
             let chart1 = UpdatingChart([], config = PeityConfig(Width = 64))
             
             yield chart1.Doc
-            yield div [
+            yield div [] [
                 Doc.Button "Button1" [] (fun () ->
                     chart1.AddValue <| Math.Random()
                 )
             ] :> _
 
-            yield hr [] :> _
-            yield div [
+            yield hr [] [] :> _
+            yield div [] [
                 let config =
                     PeityConfig(
                         Width = 64,
