@@ -11,12 +11,12 @@ description
 tags
     Web JavaScript F# C#
 files
-    ../WebSharper.Peity.Bindings/bin/Release/netstandard2.0/WebSharper.Peity.Bindings.dll ==> lib/net461
-    ../WebSharper.Peity.Bindings/bin/Release/netstandard2.0/WebSharper.Peity.Bindings.xml ==> lib/net461
+    ../WebSharper.Peity.Bindings/bin/Release/net461/WebSharper.Peity.Bindings.dll ==> lib/net461
+    ../WebSharper.Peity.Bindings/bin/Release/net461/WebSharper.Peity.Bindings.xml ==> lib/net461
     ../WebSharper.Peity.Bindings/bin/Release/netstandard2.0/WebSharper.Peity.Bindings.dll ==> lib/netstandard2.0
     ../WebSharper.Peity.Bindings/bin/Release/netstandard2.0/WebSharper.Peity.Bindings.xml ==> lib/netstandard2.0
-    ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.dll ==> lib/net461
-    ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.xml ==> lib/net461
+    ../WebSharper.Peity/bin/Release/net461/WebSharper.Peity.dll ==> lib/net461
+    ../WebSharper.Peity/bin/Release/net461/WebSharper.Peity.xml ==> lib/net461
     ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.dll ==> lib/netstandard2.0
     ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.xml ==> lib/netstandard2.0
 dependencies
