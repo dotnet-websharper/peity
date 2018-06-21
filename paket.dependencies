@@ -2,6 +2,7 @@ version 5.122.3
 source https://api.nuget.org/v3/index.json
 source https://nuget.intellifactory.com/nuget username: "%IF_USER%" password: "%IF_PASS%"
 
+framework: net461, netstandard2.0
 storage: none
 
 nuget WebSharper prerelease
