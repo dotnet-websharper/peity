@@ -20,5 +20,5 @@ files
     ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.dll ==> lib/netstandard2.0
     ../WebSharper.Peity/bin/Release/netstandard2.0/WebSharper.Peity.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper ~> LOCKEDVERSION/3
-        WebSharper.UI ~> LOCKEDVERSION/3
+        WebSharper ~> LOCKEDVERSION:[3]
+        WebSharper.UI ~> LOCKEDVERSION:[3]
